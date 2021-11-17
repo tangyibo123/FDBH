@@ -1,0 +1,35 @@
+model_params:
+  name: 'Hash_Contra_IR'
+  img_size: 32
+  in_channels: 3
+  latent_dim: 16
+  learnable_parameter_dim: 16
+  gamma: 10.0
+  max_capacity: 25
+  Capacity_max_iter: 10000 
+  hypermeter: [1, 0, 4, 1, 0.5]
+  backbone : Cifar_AE
+  path :  './logs/test_lantent_z/xxx.ckpt'
+  
+exp_params:
+  ckpt_path: './logs/test_lantent_z/xxxx.ckpt'
+  dataset: CIFAR10Pair
+  data_path: "/home/bbct/wangfan/dataset/" 
+  img_size: 32
+  batch_size: 512 # Better to have a square number 
+  LR: 0.0005
+  momentum : 0.9
+  weight_decay: 0.0 
+  num_epochs: 200
+trainer_params:
+  gpus: 1
+  distributed_backend: 'dp'
+  num_nodes: 1
+  max_nb_epochs: 200
+  max_epochs: 200
+  epochs: 200
+
+logging_params:
+  save_dir: "logs/"
+  name: "Cifar_16" 
+  manual_seed: 1265
